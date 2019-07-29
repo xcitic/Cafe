@@ -15,6 +15,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-  return view('dashboard');
-});
+Auth::routes();
+
+Route::post('/reservation', 'ReservationController@store');
+Route::get('/reservations/get', 'ReservationController@index');
+Route::post('/reservation/{id}/delete', 'ReservationController@destroy');
+Route::post('/reservation/{id}/update', 'ReservationController@update');
+
+
+Route::get('/home', 'HomeController@index')->name('home');

@@ -4,6 +4,11 @@ import router from './router';
 import store from './store';
 import './registerServiceWorker';
 
+
+import VeeValidate from 'vee-validate';
+// Bind plugins
+Vue.use(VeeValidate);
+
 Vue.config.productionTip = false;
 
 /* Axios http lib */

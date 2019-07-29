@@ -9,7 +9,7 @@
           </button>
 
           <a class="navbar-brand" href="#">
-              <strong>Navbar</strong>
+              <strong>C&B</strong>
           </a>
 
           <div class="collapse navbar-collapse" id="navbarNav">

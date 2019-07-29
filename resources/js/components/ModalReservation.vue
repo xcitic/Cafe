@@ -6,42 +6,67 @@
               <!--Header-->
               <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">×</span>
+                      <span aria-hidden="true">&times;</span>
                   </button>
-                  <h4 class="modal-title w-100">Reservation Form</h4>
+                  <h4 class="w-100 mt-1 mb-1">Reservation Form</h4>
               </div>
               <!--Body-->
               <div class="modal-body">
                   <div class="md-form">
-                      <input type="text" v-model="name" id="form22" class="form-control">
-                      <label for="form42">Your Full Name</label>
+                      <input v-model="input.name" v-validate="'required|alpha_spaces|max:50'" type="text" name="name" id="name" class="form-control">
+                      <label for="name">Your Name</label>
+                      <div v-if="submitted && errors.has('name')" class="invalid-feedback">
+                        {{ errors.first('name') }}
+                      </div>
                   </div>
 
                   <div class="md-form">
-                      <input type="text" v-model="email" id="form32" class="form-control">
-                      <label for="form34">Your Email</label>
+                      <input v-model="input.email" type="email" v-validate="'required|email|max:50'" name="email" id="email" class="form-control">
+                      <label for="email">Your Email</label>
+                      <div v-if="submitted && errors.has('email')" class="invalid-feedback">
+                        {{ errors.first('email') }}
+                      </div>
                   </div>
 
                   <div class="md-form">
-                      <input type="text" v-model="phone" id="form32" class="form-control">
-                      <label for="form34">Your Phone Number</label>
+                      <input v-model="input.phone" v-validate="'required|numeric'" type="text" name="phone" id="phone" class="form-control">
+                      <label for="phone">Your Phone Number</label>
+                      <div v-if="submitted && errors.has('phone')" class="invalid-feedback">
+                        {{ errors.first('phone') }}
+                      </div>
                   </div>
 
-                  <div class="md-form">
-                    <select v-model="people" class="mdb-select colorful-select dropdown-default">
-                      <option disabled value="">Number of people</option>
-                      <option v-model="people">One Person</option>
-                      <option>Two Persons</option>
-                      <option>Three Persons</option>
-                      <option>More</option>
-                  </select>
+                  <div class="mt-2 mb-1 md-form">
+                    <input type="number" v-model="input.seats" name="seats" v-validate="'required|numeric|max_value:250'" />
+                    <label for="seats">Number of seats</label>
+                    <range-slider
+                      class="slider mt-1"
+                      min="1"
+                      max="250"
+                      step="1"
+                      v-model="input.seats"
+                      ></range-slider>
+                      <div v-if="submitted && errors.has('seats')" class="invalid-feedback">
+                        {{ errors.first('seats') }}
+                      </div>
+
                   </div>
 
-                  <span>Selected: {{people}} </span>
+                  <div class='col-md-12 mb-2'>
+                    <div class="">
+                        <label for="datepicker" class="mb-1">Choose date and time </label>
+                    </div>
+
+                    <Datepicker format="DD-MM-YYYY H:i:s" width="100%" v-model="input.date" />
+                    <div v-if="submitted && errors.has('date')" class="invalid-feedback">
+                      {{ errors.first('date') }}
+                    </div>
+
+                </div>
 
                   <div class="text-center">
-                      <button class="btn btn-lg btn-rounded btn-primary waves-effect waves-light" @click="submit">Send Information</button>
-                      <p class="text-muted">*Some dummy text goes here.</p>
+                      <button @click="submit" :data-dismiss="complete ? 'modal' : ''" class="btn btn-lg btn-info waves-effect">Send Information</button>
+
 
                       <div class="call">
                           <p>Or you prefer book a table by phone? <span class="cf-phone"><i class="fa fa-phone"></i>+01 234 565 280</span></p>
@@ -50,7 +75,7 @@
               </div>
               <!--Footer-->
               <div class="modal-footer">
-                  <button type="button" class="btn btn-rounded btn-default waves-effect waves-light" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-light-green" data-dismiss="modal">Close</button>
               </div>
           </div>
           <!--/Content-->
@@ -60,32 +85,61 @@
 </template>
 
 <script>
+import Datepicker from 'vuejs-datetimepicker';
+import RangeSlider from 'vue-range-slider';
+import 'vue-range-slider/dist/vue-range-slider.css';
+
 
 export default {
-  name: 'ModalReservation',
+
+  components: {
+    Datepicker,
+    RangeSlider
+  },
 
   data() {
     return {
-      name: '',
-      email: '',
-      phone: '',
-      people: '',
+      input: {
+        name: '',
+        email: '',
+        phone: '',
+        seats: 1,
+        date: ''
+      },
+      submitted: false,
+      complete: false,
     }
   },
 
   methods: {
     async submit() {
-      let data = {
-        name: this.name,
-        email: this.email,
-        phone: this.phone,
-        people: this.people
-      };
-      console.log(data)
+      this.submitted = true;
+      let payload = this.input;
+
+      this.$validator.validate().then(
+        valid => {
+          if (valid) {
+            this.complete = true;
+
+            axios.post('/reservation', payload)
+              .then((response) => {
+                this.flash(response.data, 'success');
+              })
+              .catch((err) => {
+                this.flash(err, 'error');
+              });
+          }
+        }
+      )
+
+
     }
   }
 }
 </script>
 
-<style lang="css" scoped>
+<style scoped>
+.slider {
+  width: 100%;
+}
 </style>
