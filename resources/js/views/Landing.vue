@@ -1,5 +1,14 @@
 <template>
   <div>
+    <!-- Flash messaging -->
+    <div class="container-fluid">
+      <div class="col-md-12">
+        <div class="offset-md-4">
+          <flash-message style="position:fixed; z-index:999999;" class="text-center"></flash-message>
+        </div>
+      </div>
+    </div>
+    <!--/Flash Messaging -->
   <header>
 
         <!--Navbar-->
@@ -18,8 +27,9 @@
         <!--First container-->
         <div class="container">
 
-          <SectionFeatures />
-            <!--/Section: Features v.4-->
+            <!--Section: Features -->
+            <SectionFeatures />
+            <!--/Section: Features -->
 
             <hr class="between-sections wow fadeIn" data-wow-delay="0.4s" style="visibility: visible; animation-delay: 0.4s; animation-name: fadeIn;">
 
@@ -32,7 +42,7 @@
 
         <!--Streak-->
         <Streak />
-		<!--/Streak-->
+	      <!--/Streak-->
 
         <!--Second container-->
         <div class="container">
@@ -43,9 +53,9 @@
 
             <hr class="between-sections wow fadeIn" data-wow-delay="0.4s" style="visibility: hidden; animation-delay: 0.4s; animation-name: none;">
 
-            <!--Section: Testimonials v.3-->
+            <!--Section: Testimonials -->
             <SectionTestimonials />
-            <!--/Section: Testimonials v.3-->
+            <!--/Section: Testimonials -->
 
         </div>
         <!--/Second container-->

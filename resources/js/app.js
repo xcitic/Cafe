@@ -5,9 +5,19 @@ import store from './store';
 import './registerServiceWorker';
 
 
+
+import VueFlashMessage from 'vue-flash-message';
+require('vue-flash-message/dist/vue-flash-message.min.css');
 import VeeValidate from 'vee-validate';
+
 // Bind plugins
+Vue.use(VueFlashMessage, {
+  messageOptions: {
+    timeout: 3000
+  }
+});
 Vue.use(VeeValidate);
+
 
 Vue.config.productionTip = false;
 
