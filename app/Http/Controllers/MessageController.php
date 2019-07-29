@@ -16,7 +16,7 @@ class MessageController extends Controller
     public function index()
     {
       $user = Auth::user();
-
+      
       if($user->isAdmin()) {
         $messages = Message::get();
       } else {
