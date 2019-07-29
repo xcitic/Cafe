@@ -1,25 +1,31 @@
 <template>
   <div>
-    <!-- Flash messaging -->
-    <div class="container-fluid">
-      <div class="col-md-12">
-        <div class="offset-md-4">
-          <flash-message style="position:fixed; z-index:999999;" class="text-center"></flash-message>
-        </div>
-      </div>
-    </div>
-    <!--/Flash Messaging -->
+
+
+
   <header>
 
         <!--Navbar-->
         <NavBar />
         <!--/Navbar-->
 
-        <!--Mask-->
+        <!--Section: Header Image and Text-->
 		     <SectionTop />
+         <!--/Section: Header Image and Text -->
+
+         <!-- Flash messaging -->
+         <div class="container-fluid">
+           <div class="col-md-12">
+             <div class="offset-md-4">
+               <flash-message style="position:fixed; z-index:999999; top:0;" class="text-center"></flash-message>
+             </div>
+           </div>
+         </div>
+           <!--/Flash Messaging -->
+
 
          <ModalReservation />
-         <ModalContact />
+         <ModalMessage />
 
     </header>
     <main>
@@ -72,7 +78,7 @@
 import NavBar from '@/components/NavBar.vue';
 import SectionTop from '@/components/SectionTop.vue';
 import ModalReservation from '@/components/ModalReservation.vue';
-import ModalContact from '@/components/ModalContact.vue';
+import ModalMessage from '@/components/ModalMessage.vue';
 import SectionFeatures from '@/components/SectionFeatures.vue';
 import SectionAbout from '@/components/SectionAbout.vue';
 import Streak from '@/components/Streak.vue';
@@ -86,7 +92,7 @@ export default {
     NavBar,
     SectionTop,
     ModalReservation,
-    ModalContact,
+    ModalMessage,
     SectionFeatures,
     SectionAbout,
     Streak,

@@ -32,7 +32,10 @@
                       <a class="nav-link waves-effect waves-light" href="#testimonials" data-offset="100">Opinions</a>
                   </li>
                   <li class="nav-item">
-                      <a class="nav-link waves-effect waves-light" href="#contact">Contact</a>
+                      <a class="nav-link waves-effect waves-light" data-toggle="modal" data-target="#modal-contact">Contact</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link waves-effect waves-light" data-toggle="modal" data-target="#modal-reservation">Reservation</a>
                   </li>
               </ul>
 

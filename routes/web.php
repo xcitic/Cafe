@@ -15,12 +15,19 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Authentication Routes
 Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');
 
+
+// Reservation Routes
 Route::post('/reservation', 'ReservationController@store');
 Route::get('/reservations/get', 'ReservationController@index');
 Route::post('/reservation/{id}/delete', 'ReservationController@destroy');
 Route::post('/reservation/{id}/update', 'ReservationController@update');
 
-
-Route::get('/home', 'HomeController@index')->name('home');
+// Message Routes
+Route::post('/message', 'MessageController@store');
+Route::get('/messages/get', 'MessageController@index');
+Route::post('/message/{id}/delete', 'MessageController@destroy');
+Route::post('/message/{id}/update', 'MessageController@update');

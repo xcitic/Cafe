@@ -2102,15 +2102,38 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ModalContact.vue?vue&type=script&lang=js&":
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ModalMessage.vue?vue&type=script&lang=js&":
 /*!***********************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ModalContact.vue?vue&type=script&lang=js& ***!
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ModalMessage.vue?vue&type=script&lang=js& ***!
   \***********************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2171,7 +2194,57 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'ModalContact'
+  data: function data() {
+    return {
+      input: {
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
+      },
+      complete: false,
+      submitted: false
+    };
+  },
+  methods: {
+    submit: function () {
+      var _submit = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        var _this = this;
+
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                this.submitted = true;
+                this.$validator.validate().then(function (valid) {
+                  if (valid) {
+                    var payload = _this.input;
+                    _this.complete = true;
+                    axios.post('/message', payload).then(function (response) {
+                      _this.flash(response.data, 'success');
+                    })["catch"](function (err) {
+                      _this.flash(err, 'error');
+                    });
+                  }
+                });
+
+              case 2:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, this);
+      }));
+
+      function submit() {
+        return _submit.apply(this, arguments);
+      }
+
+      return submit;
+    }()
+  }
 });
 
 /***/ }),
@@ -2358,6 +2431,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
 //
 //
 //
@@ -2992,13 +3068,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_NavBar_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/components/NavBar.vue */ "./resources/js/components/NavBar.vue");
 /* harmony import */ var _components_SectionTop_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/components/SectionTop.vue */ "./resources/js/components/SectionTop.vue");
 /* harmony import */ var _components_ModalReservation_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/components/ModalReservation.vue */ "./resources/js/components/ModalReservation.vue");
-/* harmony import */ var _components_ModalContact_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/components/ModalContact.vue */ "./resources/js/components/ModalContact.vue");
+/* harmony import */ var _components_ModalMessage_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/components/ModalMessage.vue */ "./resources/js/components/ModalMessage.vue");
 /* harmony import */ var _components_SectionFeatures_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/components/SectionFeatures.vue */ "./resources/js/components/SectionFeatures.vue");
 /* harmony import */ var _components_SectionAbout_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/components/SectionAbout.vue */ "./resources/js/components/SectionAbout.vue");
 /* harmony import */ var _components_Streak_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/components/Streak.vue */ "./resources/js/components/Streak.vue");
 /* harmony import */ var _components_SectionProducts_vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @/components/SectionProducts.vue */ "./resources/js/components/SectionProducts.vue");
 /* harmony import */ var _components_SectionTestimonials_vue__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @/components/SectionTestimonials.vue */ "./resources/js/components/SectionTestimonials.vue");
 /* harmony import */ var _components_Footer_vue__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @/components/Footer.vue */ "./resources/js/components/Footer.vue");
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -3085,7 +3167,7 @@ __webpack_require__.r(__webpack_exports__);
     NavBar: _components_NavBar_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
     SectionTop: _components_SectionTop_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
     ModalReservation: _components_ModalReservation_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
-    ModalContact: _components_ModalContact_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
+    ModalMessage: _components_ModalMessage_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
     SectionFeatures: _components_SectionFeatures_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
     SectionAbout: _components_SectionAbout_vue__WEBPACK_IMPORTED_MODULE_5__["default"],
     Streak: _components_Streak_vue__WEBPACK_IMPORTED_MODULE_6__["default"],
@@ -19107,9 +19189,9 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ModalContact.vue?vue&type=template&id=a9c491c4&scoped=true&":
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ModalMessage.vue?vue&type=template&id=74a34785&scoped=true&":
 /*!***************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ModalContact.vue?vue&type=template&id=a9c491c4&scoped=true& ***!
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ModalMessage.vue?vue&type=template&id=74a34785&scoped=true& ***!
   \***************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -19122,146 +19204,311 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c(
+    "div",
+    {
+      staticClass: "modal fade modal-ext",
+      attrs: {
+        id: "modal-contact",
+        tabindex: "-1",
+        role: "dialog",
+        "aria-labelledby": "myModalLabel",
+        "aria-hidden": "true"
+      }
+    },
+    [
+      _c("div", { staticClass: "modal-dialog", attrs: { role: "document" } }, [
+        _c("div", { staticClass: "modal-content" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c("div", { staticClass: "modal-body" }, [
+            _c("p", [_vm._v("Tell us what is on your mind")]),
+            _vm._v(" "),
+            _c("br"),
+            _vm._v(" "),
+            _c("div", { staticClass: "md-form" }, [
+              _c("i", { staticClass: "fa fa-user prefix" }),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model.trim",
+                    value: _vm.input.name,
+                    expression: "input.name",
+                    modifiers: { trim: true }
+                  },
+                  {
+                    name: "validate",
+                    rawName: "v-validate",
+                    value: "required|alpha_spaces|min:4|max:50",
+                    expression: "'required|alpha_spaces|min:4|max:50'"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { id: "contact-name", name: "name", type: "text" },
+                domProps: { value: _vm.input.name },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.input, "name", $event.target.value.trim())
+                  },
+                  blur: function($event) {
+                    return _vm.$forceUpdate()
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("label", { attrs: { for: "contact-name" } }, [
+                _vm._v("Your name")
+              ]),
+              _vm._v(" "),
+              _vm.submitted && _vm.errors.has("name")
+                ? _c("div", { staticClass: "invalid-feedback" }, [
+                    _vm._v(
+                      "\n                      " +
+                        _vm._s(_vm.errors.first("name")) +
+                        "\n                    "
+                    )
+                  ])
+                : _vm._e()
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "md-form" }, [
+              _c("i", { staticClass: "fa fa-envelope prefix" }),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model.trim",
+                    value: _vm.input.email,
+                    expression: "input.email",
+                    modifiers: { trim: true }
+                  },
+                  {
+                    name: "validate",
+                    rawName: "v-validate",
+                    value: "required|email|max:50",
+                    expression: "'required|email|max:50'"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { name: "email", id: "contact-email", type: "email" },
+                domProps: { value: _vm.input.email },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.input, "email", $event.target.value.trim())
+                  },
+                  blur: function($event) {
+                    return _vm.$forceUpdate()
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("label", { attrs: { for: "contact-email" } }, [
+                _vm._v("Your email")
+              ]),
+              _vm._v(" "),
+              _vm.submitted && _vm.errors.has("email")
+                ? _c("div", { staticClass: "invalid-feedback" }, [
+                    _vm._v(
+                      "\n                      " +
+                        _vm._s(_vm.errors.first("email")) +
+                        "\n                    "
+                    )
+                  ])
+                : _vm._e()
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "md-form" }, [
+              _c("i", { staticClass: "fa fa-tag prefix" }),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model.trim",
+                    value: _vm.input.subject,
+                    expression: "input.subject",
+                    modifiers: { trim: true }
+                  },
+                  {
+                    name: "validate",
+                    rawName: "v-validate",
+                    value: {
+                      required: true,
+                      regex: /^[A-Za-z0-9.,!' -]*$/,
+                      max: 100
+                    },
+                    expression:
+                      "{required: true, regex: /^[A-Za-z0-9.,!' -]*$/ , max:100}"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { name: "subject", type: "text", id: "contact-subject" },
+                domProps: { value: _vm.input.subject },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.input, "subject", $event.target.value.trim())
+                  },
+                  blur: function($event) {
+                    return _vm.$forceUpdate()
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("label", { attrs: { for: "contact-subject" } }, [
+                _vm._v("Subject")
+              ]),
+              _vm._v(" "),
+              _vm.submitted && _vm.errors.has("subject")
+                ? _c("div", { staticClass: "invalid-feedback" }, [
+                    _vm._v(
+                      "\n                      " +
+                        _vm._s(_vm.errors.first("subject")) +
+                        "\n                    "
+                    )
+                  ])
+                : _vm._e()
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "md-form" }, [
+              _c("i", { staticClass: "fa fa-pencil prefix" }),
+              _vm._v(" "),
+              _c("textarea", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model.trim",
+                    value: _vm.input.message,
+                    expression: "input.message",
+                    modifiers: { trim: true }
+                  },
+                  {
+                    name: "validate",
+                    rawName: "v-validate",
+                    value: {
+                      required: true,
+                      regex: /^[A-Za-z0-9.,!' -]*$/,
+                      max: 255
+                    },
+                    expression:
+                      "{required: true, regex: /^[A-Za-z0-9.,!' -]*$/ , max:255}"
+                  }
+                ],
+                staticClass: "md-textarea",
+                attrs: { name: "message", type: "text", id: "contact-message" },
+                domProps: { value: _vm.input.message },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.input, "message", $event.target.value.trim())
+                  },
+                  blur: function($event) {
+                    return _vm.$forceUpdate()
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("label", { attrs: { for: "contact-message" } }, [
+                _vm._v("Textarea")
+              ]),
+              _vm._v(" "),
+              _vm.submitted && _vm.errors.has("message")
+                ? _c("div", { staticClass: "invalid-feedback" }, [
+                    _vm._v(
+                      "\n                      " +
+                        _vm._s(_vm.errors.first("message")) +
+                        "\n                    "
+                    )
+                  ])
+                : _vm._e()
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "text-center" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-lg btn-info waves-effect",
+                  attrs: { "data-dismiss": _vm.complete ? "modal" : "" },
+                  on: { click: _vm.submit }
+                },
+                [_vm._v("Submit")]
+              ),
+              _vm._v(" "),
+              _vm._m(1)
+            ])
+          ]),
+          _vm._v(" "),
+          _vm._m(2)
+        ])
+      ])
+    ]
+  )
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "modal fade modal-ext",
-        attrs: {
-          id: "modal-contact",
-          tabindex: "-1",
-          role: "dialog",
-          "aria-labelledby": "myModalLabel",
-          "aria-hidden": "true"
-        }
-      },
-      [
-        _c(
-          "div",
-          { staticClass: "modal-dialog", attrs: { role: "document" } },
-          [
-            _c("div", { staticClass: "modal-content" }, [
-              _c("div", { staticClass: "modal-header" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "close",
-                    attrs: {
-                      type: "button",
-                      "data-dismiss": "modal",
-                      "aria-label": "Close"
-                    }
-                  },
-                  [
-                    _c("span", { attrs: { "aria-hidden": "true" } }, [
-                      _vm._v("×")
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "h4",
-                  {
-                    staticClass: "modal-title w-100",
-                    attrs: { id: "myModalLabel" }
-                  },
-                  [_vm._v("Write to us")]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "modal-body" }, [
-                _c("p", [_vm._v("We like to receive a messages.")]),
-                _vm._v(" "),
-                _c("br"),
-                _vm._v(" "),
-                _c("div", { staticClass: "md-form" }, [
-                  _c("i", { staticClass: "fa fa-user prefix" }),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: { type: "text", id: "form22" }
-                  }),
-                  _vm._v(" "),
-                  _c("label", { attrs: { for: "form42" } }, [
-                    _vm._v("Your name")
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "md-form" }, [
-                  _c("i", { staticClass: "fa fa-envelope prefix" }),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: { type: "text", id: "form32" }
-                  }),
-                  _vm._v(" "),
-                  _c("label", { attrs: { for: "form34" } }, [
-                    _vm._v("Your email")
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "md-form" }, [
-                  _c("i", { staticClass: "fa fa-tag prefix" }),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: { type: "text", id: "form32" }
-                  }),
-                  _vm._v(" "),
-                  _c("label", { attrs: { for: "form34" } }, [_vm._v("Subject")])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "md-form" }, [
-                  _c("i", { staticClass: "fa fa-pencil prefix" }),
-                  _vm._v(" "),
-                  _c("textarea", {
-                    staticClass: "md-textarea",
-                    attrs: { type: "text", id: "form8" }
-                  }),
-                  _vm._v(" "),
-                  _c("label", { attrs: { for: "form8" } }, [_vm._v("Textarea")])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "text-center" }, [
-                  _c(
-                    "button",
-                    { staticClass: "btn btn-lg btn-primary waves-effect" },
-                    [_vm._v("Submit")]
-                  ),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "call" }, [
-                    _c("p", [
-                      _vm._v("Or would you prefer to call? "),
-                      _c("span", { staticClass: "cf-phone" }, [
-                        _c("i", { staticClass: "fa fa-phone" }),
-                        _vm._v("+01 234 565 280")
-                      ])
-                    ])
-                  ])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "modal-footer" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-secondary waves-effect",
-                    attrs: { type: "button", "data-dismiss": "modal" }
-                  },
-                  [_vm._v("Close")]
-                )
-              ])
-            ])
-          ]
-        )
-      ]
-    )
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      ),
+      _vm._v(" "),
+      _c("h4", { staticClass: "w-100", attrs: { id: "myModalLabel" } }, [
+        _vm._v("Write to us")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "call" }, [
+      _c("p", [
+        _vm._v("Or would you prefer to call? "),
+        _c("span", { staticClass: "cf-phone" }, [
+          _c("i", { staticClass: "fa fa-phone" }),
+          _vm._v("+01 234 565 280")
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-light-green waves-effect",
+          attrs: { type: "button", "data-dismiss": "modal" }
+        },
+        [_vm._v("Close")]
+      )
+    ])
   }
 ]
 render._withStripped = true
@@ -19733,9 +19980,26 @@ var staticRenderFns = [
                     "a",
                     {
                       staticClass: "nav-link waves-effect waves-light",
-                      attrs: { href: "#contact" }
+                      attrs: {
+                        "data-toggle": "modal",
+                        "data-target": "#modal-contact"
+                      }
                     },
                     [_vm._v("Contact")]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("li", { staticClass: "nav-item" }, [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "nav-link waves-effect waves-light",
+                      attrs: {
+                        "data-toggle": "modal",
+                        "data-target": "#modal-reservation"
+                      }
+                    },
+                    [_vm._v("Reservation")]
                   )
                 ])
               ]),
@@ -20692,22 +20956,6 @@ var render = function() {
   return _c(
     "div",
     [
-      _c("div", { staticClass: "container-fluid" }, [
-        _c("div", { staticClass: "col-md-12" }, [
-          _c(
-            "div",
-            { staticClass: "offset-md-4" },
-            [
-              _c("flash-message", {
-                staticClass: "text-center",
-                staticStyle: { position: "fixed", "z-index": "999999" }
-              })
-            ],
-            1
-          )
-        ])
-      ]),
-      _vm._v(" "),
       _c(
         "header",
         [
@@ -20715,9 +20963,29 @@ var render = function() {
           _vm._v(" "),
           _c("SectionTop"),
           _vm._v(" "),
+          _c("div", { staticClass: "container-fluid" }, [
+            _c("div", { staticClass: "col-md-12" }, [
+              _c(
+                "div",
+                { staticClass: "offset-md-4" },
+                [
+                  _c("flash-message", {
+                    staticClass: "text-center",
+                    staticStyle: {
+                      position: "fixed",
+                      "z-index": "999999",
+                      top: "0"
+                    }
+                  })
+                ],
+                1
+              )
+            ])
+          ]),
+          _vm._v(" "),
           _c("ModalReservation"),
           _vm._v(" "),
-          _c("ModalContact")
+          _c("ModalMessage")
         ],
         1
       ),
@@ -37221,17 +37489,17 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/ModalContact.vue":
+/***/ "./resources/js/components/ModalMessage.vue":
 /*!**************************************************!*\
-  !*** ./resources/js/components/ModalContact.vue ***!
+  !*** ./resources/js/components/ModalMessage.vue ***!
   \**************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _ModalContact_vue_vue_type_template_id_a9c491c4_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ModalContact.vue?vue&type=template&id=a9c491c4&scoped=true& */ "./resources/js/components/ModalContact.vue?vue&type=template&id=a9c491c4&scoped=true&");
-/* harmony import */ var _ModalContact_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ModalContact.vue?vue&type=script&lang=js& */ "./resources/js/components/ModalContact.vue?vue&type=script&lang=js&");
+/* harmony import */ var _ModalMessage_vue_vue_type_template_id_74a34785_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ModalMessage.vue?vue&type=template&id=74a34785&scoped=true& */ "./resources/js/components/ModalMessage.vue?vue&type=template&id=74a34785&scoped=true&");
+/* harmony import */ var _ModalMessage_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ModalMessage.vue?vue&type=script&lang=js& */ "./resources/js/components/ModalMessage.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -37241,50 +37509,50 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _ModalContact_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _ModalContact_vue_vue_type_template_id_a9c491c4_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _ModalContact_vue_vue_type_template_id_a9c491c4_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _ModalMessage_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ModalMessage_vue_vue_type_template_id_74a34785_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ModalMessage_vue_vue_type_template_id_74a34785_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
-  "a9c491c4",
+  "74a34785",
   null
   
 )
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/components/ModalContact.vue"
+component.options.__file = "resources/js/components/ModalMessage.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/components/ModalContact.vue?vue&type=script&lang=js&":
+/***/ "./resources/js/components/ModalMessage.vue?vue&type=script&lang=js&":
 /*!***************************************************************************!*\
-  !*** ./resources/js/components/ModalContact.vue?vue&type=script&lang=js& ***!
+  !*** ./resources/js/components/ModalMessage.vue?vue&type=script&lang=js& ***!
   \***************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ModalContact_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./ModalContact.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ModalContact.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ModalContact_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ModalMessage_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./ModalMessage.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ModalMessage.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ModalMessage_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/components/ModalContact.vue?vue&type=template&id=a9c491c4&scoped=true&":
+/***/ "./resources/js/components/ModalMessage.vue?vue&type=template&id=74a34785&scoped=true&":
 /*!*********************************************************************************************!*\
-  !*** ./resources/js/components/ModalContact.vue?vue&type=template&id=a9c491c4&scoped=true& ***!
+  !*** ./resources/js/components/ModalMessage.vue?vue&type=template&id=74a34785&scoped=true& ***!
   \*********************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ModalContact_vue_vue_type_template_id_a9c491c4_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./ModalContact.vue?vue&type=template&id=a9c491c4&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ModalContact.vue?vue&type=template&id=a9c491c4&scoped=true&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ModalContact_vue_vue_type_template_id_a9c491c4_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ModalMessage_vue_vue_type_template_id_74a34785_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./ModalMessage.vue?vue&type=template&id=74a34785&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ModalMessage.vue?vue&type=template&id=74a34785&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ModalMessage_vue_vue_type_template_id_74a34785_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ModalContact_vue_vue_type_template_id_a9c491c4_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ModalMessage_vue_vue_type_template_id_74a34785_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
