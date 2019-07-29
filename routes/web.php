@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('landing');
-});
+Route::get('/', 'LandingController@index');
 
 // Authentication Routes
 Auth::routes(['register' => false]);

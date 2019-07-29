@@ -20,7 +20,6 @@
     <!-- Styles -->
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/material.min.css')}}">
-    {{-- <link rel="stylesheet" href="{{ mix('css/app.css')}}"> --}}
     <link rel="stylesheet" href="{{ asset('css/styles.css')}}">
 
 </head>

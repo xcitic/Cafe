@@ -34,3 +34,12 @@ background-color: #555;
 opacity: 1;
 visibility: visible;
 }
+.slider {
+  width: 100%;
+}
+
+.calender-div {
+  position: fixed !important;
+  top: auto !important;
+  left: auto !important;
+}

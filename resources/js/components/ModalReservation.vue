@@ -138,8 +138,6 @@ export default {
 }
 </script>
 
-<style scoped>
-.slider {
-  width: 100%;
-}
+<style>
+
 </style>
