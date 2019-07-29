@@ -38,14 +38,10 @@ class ReservationController extends Controller
      */
     public function store(Request $request)
     {
-      // validate the input
-      //
-      // save to Database
-      //
-      // Create user with random password
-      //
-      // send email notification to user with reservation details and user login to change their details
-
+      // 1. validate the input
+      // 2. if not user, create user
+      // 3. save reservation to db
+      // 4. send email notification to user
 
       $validateData = $request->validate([
         'name' => 'required|string|max:100',
@@ -70,6 +66,7 @@ class ReservationController extends Controller
 
       if (!$user)
       {
+        // generate password and encrypt it
         $password = $this->randomPassword(8);
         $encrypted = password_hash($password, PASSWORD_DEFAULT);
 
@@ -80,7 +77,6 @@ class ReservationController extends Controller
         ]);
 
         $user->save();
-
         $newUser = true;
       }
 
@@ -112,8 +108,8 @@ class ReservationController extends Controller
 
         return response()->json('Your reservation has been saved. Thank you. An confirmation will soon be sent to: ' . $email . '', 200);
       }
-    }
 
+    }
 
     /**
      * Update the specified resource in storage.

@@ -1,7 +1,7 @@
 @component('mail::message')
 # Thank you Mr/Mrs {{$reservation->name}}
 
-Your reservation at <i> {{ config('APP_NAME') }} </i> has been registered: <br>
+Your reservation at <i> {{ config('app.name') }} </i> has been registered <br>
 Number of seats: {{$reservation->seats}} <br>
 Date: {{$reservation->date}}
 
@@ -13,7 +13,7 @@ Date: {{$reservation->date}}
   <strong>Password: {{$password}} </strong>
 @endif
 <br>
-@component('mail::button', ['url' => config('APP_URL') . '/login'])
+@component('mail::button', ['url' => config('app.url') . '/login'])
 Login if you want to edit your reservation
 @endcomponent
 
