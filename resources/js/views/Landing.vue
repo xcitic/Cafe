@@ -1,33 +1,30 @@
 <template>
   <div>
+    <header>
 
+          <!--Navbar-->
+          <NavBar />
+          <!--/Navbar-->
 
+          <!--Section: Header Image and Text-->
+  		     <SectionTop />
+           <!--/Section: Header Image and Text -->
 
-  <header>
-
-        <!--Navbar-->
-        <NavBar />
-        <!--/Navbar-->
-
-        <!--Section: Header Image and Text-->
-		     <SectionTop />
-         <!--/Section: Header Image and Text -->
-
-         <!-- Flash messaging -->
-         <div class="container-fluid">
-           <div class="col-md-12">
-             <div class="offset-md-4">
-               <flash-message style="position:fixed; z-index:999999; top:0;" class="text-center"></flash-message>
+           <!-- Flash messaging -->
+           <div class="container-fluid">
+             <div class="col-md-12">
+               <div class="offset-md-4">
+                 <flash-message style="position:fixed; z-index:999999; top:0;" class="text-center"></flash-message>
+               </div>
              </div>
            </div>
-         </div>
-           <!--/Flash Messaging -->
+             <!--/Flash Messaging -->
 
 
-         <ModalReservation />
-         <ModalMessage />
+           <ModalReservation />
+           <ModalMessage />
 
-    </header>
+      </header>
     <main>
 
         <!--First container-->

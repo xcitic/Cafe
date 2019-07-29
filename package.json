@@ -28,6 +28,7 @@
     "dependencies": {
         "vee-validate": "^2.2.13",
         "vue-flash-message": "^0.7.2",
+        "vue-js-modal": "^1.3.31",
         "vue-range-slider": "^0.6.0",
         "vue-router": "^3.0.7",
         "vuejs-datetimepicker": "^1.1.11"

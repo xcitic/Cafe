@@ -37,6 +37,7 @@
                   <li class="nav-item">
                       <a class="nav-link waves-effect waves-light" data-toggle="modal" data-target="#modal-reservation">Reservation</a>
                   </li>
+
               </ul>
 
               <!--Social Icons-->
@@ -50,6 +51,9 @@
                   <li class="nav-item">
                       <a class="nav-link waves-effect waves-light"><i class="fa fa-instagram"></i></a>
                   </li>
+                  <li class="nav-item ml-2">
+                    <a class="nav-link" @click="redirectLogin">Login</a>
+                  </li>
               </ul>
 
           </div>
@@ -60,7 +64,13 @@
 
 <script>
 export default {
-  name: 'NavBar'
+  name: 'NavBar',
+
+  methods: {
+    redirectLogin() {
+      window.location.assign('/login');
+    }
+  }
 }
 </script>
 

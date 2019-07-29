@@ -5,10 +5,12 @@ import store from './store';
 import './registerServiceWorker';
 
 
+Vue.config.productionTip = false;
 
 import VueFlashMessage from 'vue-flash-message';
 require('vue-flash-message/dist/vue-flash-message.min.css');
 import VeeValidate from 'vee-validate';
+import VModal from 'vue-js-modal';
 
 // Bind plugins
 Vue.use(VueFlashMessage, {
@@ -17,9 +19,9 @@ Vue.use(VueFlashMessage, {
   }
 });
 Vue.use(VeeValidate);
+Vue.use(VModal, { dynamic: true, dynamicDefaults: { clickToClose: false } });
 
-
-Vue.config.productionTip = false;
+Vue.component('dashboard', require('./views/Dashboard.vue').default);
 
 /* Axios http lib */
 window.axios = require('axios');

@@ -12,11 +12,11 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('landing');
 });
 
 // Authentication Routes
-Auth::routes();
+Auth::routes(['register' => false]);
 Route::get('/home', 'HomeController@index')->name('home');
 
 
