@@ -16,7 +16,7 @@ class MessageController extends Controller
     public function index()
     {
       $user = Auth::user();
-      
+
       if($user->isAdmin()) {
         $messages = Message::get();
       } else {
@@ -73,7 +73,7 @@ class MessageController extends Controller
      * @param  \App\Message  $message
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $data, $id)
+    public function update(Request $data, int $id)
     {
 
       $validateData = $data->validate([
@@ -110,7 +110,7 @@ class MessageController extends Controller
      * @param  \App\Message  $message
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(int $id)
     {
         $message = Message::findOrFail($id);
         $user = Auth::user();
