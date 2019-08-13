@@ -153,17 +153,13 @@ class ReservationController extends Controller
      */
     public function destroy(int $id)
     {
-      $reservation = Reservation::findOrFail($id);
+      $reservation = Reservation::where('id', $id)->first();
       $user = Auth::user();
 
-      $user_id = $user->id;
-      $reservation_owner = $reservation->owner->id;
-
-      if ($user->isAdmin()) {
+      if ( isset($reservation->user_id) && $user->id === $reservation->owner->id ) {
         $reservation->delete();
       }
-      elseif ($user_id === $reservation_owner) {
-
+      elseif ($user->isAdmin()) {
         $reservation->delete();
       }
       else {
