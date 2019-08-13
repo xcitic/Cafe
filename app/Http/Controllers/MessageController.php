@@ -19,7 +19,7 @@ class MessageController extends Controller
       $user = Auth::user();
 
       if($user->isAdmin()) {
-        $messages = Message::get();
+        $messages = Message::latest()->get();
       } else {
         $messages = $user->messages;
       }
@@ -69,33 +69,32 @@ class MessageController extends Controller
      * @param  \App\Message  $message
      * @return \Illuminate\Http\Response
      */
-    public function update(ContactFormRequest $request, int $id)
+    public function update(ContactFormRequest $data, int $id)
     {
 
+      $validated = $data->validated();
 
-      $validated = $request->validated();
-
-      $message = Message::findOrFail($id);
+      $message = Message::where('id', $id)->first();
       $user = Auth::user();
-      $message_owner = $message->owner->id;
-
-      // Admin can edit everything, user can only edit what they own.
-      if ($user->isAdmin()) {
+      // Check if message has a owner, and that owner is the logged in user
+      if(isset($message->user_id) && $user->id === $message->owner->id) {
         $message->update([
-          'name'=> $request->name,
-          'email'=> $request->email,
-          'subject' => $request->subject,
-          'message' => $request->message,
+          'name'=> $data->name,
+          'email'=> $data->email,
+          'subject' => $data->subject,
+          'message' => $data->message
         ]);
       }
-      elseif ($user->id === $message_owner) {
-        $message->update([
-          'name'=> $request->name,
-          'email'=> $request->email,
-          'subject' => $request->subject,
-          'message' => $request->message,
-        ]);
-      }
+      // check if the user has role admin
+       elseif ($user->isAdmin()) {
+         $message->update([
+           'name'=> $data->name,
+           'email'=> $data->email,
+           'subject' => $data->subject,
+           'message' => $data->message
+         ]);
+       }
+      // User did not pass requirements to edit
       else {
         return response()->json('Unauthorized', 401);
       }
@@ -112,15 +111,14 @@ class MessageController extends Controller
      */
     public function destroy(int $id)
     {
-        $message = Message::findOrFail($id);
+
+        $message = Message::where('id', $id)->first();
         $user = Auth::user();
 
-        $message_owner = $message->owner->id;
-
-        if($user->isAdmin() ) {
+        if(isset($message->user_id) && $user->id === $message->owner->id) {
           $message->delete();
         }
-        elseif ($user->id === $message_owner) {
+        elseif($user->isAdmin()) {
           $message->delete();
         }
         else {
