@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Reservation;
 use App\User;
+use App\Http\Requests\ReservationRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
@@ -21,7 +22,7 @@ class ReservationController extends Controller
       $user = Auth::user();
 
       if ($user->isAdmin()) {
-        $reservations = Reservation::get();
+        $reservations = Reservation::latest()->get();
       } else {
         $reservations = $user->reservations;
       }
@@ -36,20 +37,14 @@ class ReservationController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ReservationRequest $request)
     {
       // 1. validate the input
       // 2. if not user, create user
       // 3. save reservation to db
       // 4. send email notification to user
 
-      $validateData = $request->validate([
-        'name' => 'required|string|max:100',
-        'email' => 'required|string|max:100',
-        'phone' => 'required|string|max:25',
-        'seats' => 'required|integer|max:250',
-        'date' => 'required|string|max:100',
-      ]);
+      $validated = $request->validated();
 
 
       $email = $request->email;
@@ -118,26 +113,31 @@ class ReservationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, int $id)
+    public function update(ReservationRequest $request, int $id)
     {
-        $validateData = $request->validate([
-        'name' => 'required|string|max:100',
-        'email' => 'required|string|max:100',
-        'phone' => 'required|string|max:25',
-        'seats' => 'required|integer|max:250',
-        'date' => 'required|string|max:100',
-        ]);
 
-      $reservation = Reservation::findOrFail($id);
+      $validated = $request->validated();
+
+      $reservation = Reservation::where('id', $id)->first();
       $user = Auth::user();
-      $reservation_owner = $reservation->owner->id;
 
-      // Admin can edit everything, user can only edit what they own.
-      if ($user->isAdmin()) {
-        $reservation->update($request->all());
+      if(isset($reservation->owner) && $reservation_owner = $reservation->owner->id) {
+          $reservation->update([
+            'name' => $request->name,
+            'email' => $email,
+            'phone' => $request->phone,
+            'seats' => $request->seats,
+            'date' => $request->date,
+          ]);
       }
-      elseif ($user->id === $reservation_owner) {
-        $reservation->update($request->all());
+      elseif ($user->isAdmin()) {
+        $reservation->update([
+          'name' => $request->name,
+          'email' => $email,
+          'phone' => $request->phone,
+          'seats' => $request->seats,
+          'date' => $request->date,
+        ]);
       }
       else {
         return response()->json('Unauthorized', 401);
@@ -145,6 +145,7 @@ class ReservationController extends Controller
 
       return response()->json('Successfully updated your reservation.', 200);
     }
+
 
     /**
      * Remove the specified resource from storage.
