@@ -98,7 +98,7 @@ class ReservationController extends Controller
             }
 
         } catch (\Exception $e) {
-            return response()->json('Could not send to that email', 422);
+            return response(['message' => 'Could not send email to that address.'], 400);
         }
 
         return response()->json('Your reservation has been saved. Thank you. An confirmation will soon be sent to: ' . $email . '', 200);
