@@ -121,7 +121,7 @@ class ReservationController extends Controller
       $reservation = Reservation::where('id', $id)->first();
       $user = Auth::user();
 
-      if ( isset($reservation->user_id) && $reservation->id === $reservation->owner->id ) {
+      if ( isset($reservation->user_id) && $user->id === $reservation->owner->id ) {
           $reservation->update([
             'name' => $request->name,
             'phone' => $request->phone,
