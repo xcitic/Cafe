@@ -121,10 +121,9 @@ class ReservationController extends Controller
       $reservation = Reservation::where('id', $id)->first();
       $user = Auth::user();
 
-      if(isset($reservation->owner) && $reservation_owner = $reservation->owner->id) {
+      if ( isset($reservation->user_id) && $reservation->id === $reservation->owner->id ) {
           $reservation->update([
             'name' => $request->name,
-            'email' => $email,
             'phone' => $request->phone,
             'seats' => $request->seats,
             'date' => $request->date,
@@ -133,7 +132,6 @@ class ReservationController extends Controller
       elseif ($user->isAdmin()) {
         $reservation->update([
           'name' => $request->name,
-          'email' => $email,
           'phone' => $request->phone,
           'seats' => $request->seats,
           'date' => $request->date,
