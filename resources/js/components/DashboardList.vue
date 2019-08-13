@@ -163,7 +163,6 @@ export default {
 
     modalReservation(i) {
       let payload = this.reservations[i];
-      console.log(payload)
       this.$modal.show(editReservation, {
           data: payload
       }, {

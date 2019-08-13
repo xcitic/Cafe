@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Message;
+use App\Http\Requests\ContactFormRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -33,15 +34,10 @@ class MessageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ContactFormRequest $request)
     {
-        $validateData = $request->validate([
-          'name' => 'required|string|max:75',
-          'email' => 'required|email|max:75',
-          'subject' => 'required|string|max:255',
-          'message'=> 'required|string|max:750',
-        ]);
 
+      $validated = $request->validated();
 
       $emailExists = \App\User::where('email', $request->email)->first();
 
@@ -73,15 +69,11 @@ class MessageController extends Controller
      * @param  \App\Message  $message
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $data, int $id)
+    public function update(ContactFormRequest $request, int $id)
     {
 
-      $validateData = $data->validate([
-        'name' => 'required|string|max:75',
-        'email' => 'required|email|max:75',
-        'subject' => 'required|string|max:255',
-        'message'=> 'required|string|max:750',
-      ]);
+
+      $validated = $request->validated();
 
       $message = Message::findOrFail($id);
       $user = Auth::user();
@@ -89,16 +81,24 @@ class MessageController extends Controller
 
       // Admin can edit everything, user can only edit what they own.
       if ($user->isAdmin()) {
-        $message->update($data->all());
+        $message->update([
+          'name'=> $request->name,
+          'email'=> $request->email,
+          'subject' => $request->subject,
+          'message' => $request->message,
+        ]);
       }
       elseif ($user->id === $message_owner) {
-
-        $message->update($data->all());
+        $message->update([
+          'name'=> $request->name,
+          'email'=> $request->email,
+          'subject' => $request->subject,
+          'message' => $request->message,
+        ]);
       }
       else {
         return response()->json('Unauthorized', 401);
       }
-
 
       return response()->json('Successfully updated your message.', 200);
 
