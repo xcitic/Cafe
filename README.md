@@ -1,5 +1,9 @@
 # Cafe
-Cafe booking and management webpage made with Laravel and VueJS.
+<p> Cafe booking and management webpage made with Laravel and VueJS. </p>
+
+<a href="https://cafe.samilazreg.com" style="padding-bottom: 1rem;">
+ Live demo
+</a> 
 
 <p align="center">
   <a href="https://github.com/laravel/laravel">
